@@ -1,9 +1,16 @@
+const choices = ["rock", "paper", "scissors"];
 
 /*
 1. Function: `getComputerChoice()`
     - Randomly select a choice using `Math.floor`
     - Return the selected choice
 */
+function getComputerChoice() {
+  const choice = Math.floor(Math.random() * 3);
+  return choice
+}
+
+console.log(getComputerChoice());
 
 /*  
 2. Function: `getHumanChoice()`
