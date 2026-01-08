@@ -92,8 +92,60 @@ You won this round!`
       - if `computerScore > humanScore` -> "Computer wins the game!"
       - if `humanScore == computerScore` -> "The game is a tie!"
 */
+function playGame() {
+
+  let humanScore = 0;
+  let computerScore = 0;
+  let roundsPlayed = 0;
+
+  while (roundsPlayed < 5) {
+    const computerSelection = getComputerChoice();
+    const humanSelection = getHumanChoice();
+    switch (winner = playRound(humanSelection, computerSelection)) {
+      case "human":
+        humanScore++;
+        break;
+      case "computer":
+        computerScore++;
+        break;
+      case "tie":
+        break;
+    }
+    roundsPlayed++;
+  }
+
+  if (humanScore > computerScore) {
+    console.log(
+      `Human Score: ${humanScore}
+Computer Score: ${computerScore}
+      
+Rounds Played: ${roundsPlayed}
+      
+You win the game!`
+    );
+  } else if (humanScore < computerScore) {
+    console.log(
+      `Human Score: ${humanScore}
+Computer Score: ${computerScore}
+      
+Rounds Played: ${roundsPlayed}
+      
+Computer wins the game!`
+    );
+  } else {
+    console.log(
+      `Human Score: ${humanScore}
+Computer Score: ${computerScore}
+   
+Rounds Played: ${roundsPlayed}
+      
+The game is a tie!`
+    );
+  }
+}
 
 /*
 5. Main Execution:
     - Call `playGame()` to start the game
 */
+playGame();
