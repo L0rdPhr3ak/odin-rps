@@ -41,6 +41,34 @@ function getHumanChoice() {
       [`winner`] wins the round."
     - Returns `winner` to `playGame()` function as `"human"`, `"computer"`, or `"tie"`
 */
+function playRound(humanChoice, computerChoice) {
+
+  if ((humanChoice + 1) % 3 == computerChoice) {
+    console.log(
+      `You chose: ${choices[humanChoice]}
+Computer chose: ${choices[computerChoice]}
+
+Computer wins this round!`
+    );
+    return "computer";
+  } else if (humanChoice == computerChoice) {
+    console.log(
+      `You chose: ${choices[humanChoice]}
+Computer chose: ${choices[computerChoice]}
+  
+This round is a tie!`
+    );
+    return "tie";
+  } else {
+    console.log(
+      `You chose: ${choices[humanChoice]}
+Computer chose: ${choices[computerChoice]}
+  
+You won this round!`
+    );
+    return "human";
+  }
+}
 
 /* 
 4. Function: `playGame()`
