@@ -10,8 +10,6 @@ function getComputerChoice() {
   return choice
 }
 
-console.log(getComputerChoice());
-
 /*  
 2. Function: `getHumanChoice()`
     - Prompt user to enter their choice (e.g., "Enter rock, paper, or scissors:")
@@ -19,6 +17,21 @@ console.log(getComputerChoice());
     - Convert input to lowercase
     - Return input
 */
+function getHumanChoice() {
+  let answer = prompt("Enter rock, paper, or scissors:");
+  switch (answer.toLowerCase()) {
+    case "rock":
+      answer = 0;
+      break;
+    case "paper":
+      answer = 1;
+      break;
+    case "scissors":
+      answer = 2;
+      break;
+  }
+  return answer
+}
 
 /*  
 3. Function: `playRound(humanChoice, computerChoice)`
