@@ -1,22 +1,19 @@
+// Array mapping numeric choices to their string representations
 const choices = ["rock", "paper", "scissors"];
 
-/*
-1. Function: `getComputerChoice()`
-    - Randomly select a choice using `Math.floor`
-    - Return the selected choice
-*/
+/**
+ * Returns a random computer choice:
+ *   @returns {number} 0, 1, or 2 for rock, paper, or scissors, respectively
+ */
 function getComputerChoice() {
   const choice = Math.floor(Math.random() * 3);
   return choice
 }
 
-/*  
-2. Function: `getHumanChoice()`
-    - Prompt user to enter their choice (e.g., "Enter rock, paper, or scissors:")
-    - Read user input
-    - Convert input to lowercase
-    - Return input
-*/
+/**
+ * Prompts user for their choice and converts it to numeric format
+ * @returns {number} 0, 1, or 2 for rock, paper, or scissors, respectively
+ */
 function getHumanChoice() {
   let answer = prompt("Enter rock, paper, or scissors:");
   switch (answer.toLowerCase()) {
@@ -33,14 +30,12 @@ function getHumanChoice() {
   return answer
 }
 
-/*  
-3. Function: `playRound(humanChoice, computerChoice)`
-    - Takes `humanChoice` and `computerChoice` as parameters
-    - Determine winner based on the two choices and store in `winner`
-    - Log round results: "You chose [`humanChoice`], computer chose [`computerChoice`].
-      [`winner`] wins the round."
-    - Returns `winner` to `playGame()` function as `"human"`, `"computer"`, or `"tie"`
-*/
+/**
+ * Plays a single round and returns the winner
+ *   @param {number} humanChoice The player's choice (0=rock, 1=paper, 2=scissors)
+ *   @param {number} computerChoice The computer's random choice (0=rock, 1=paper, 2=scissors)
+ *   @returns {string} "human", "computer", or "tie"
+ */
 function playRound(humanChoice, computerChoice) {
 
   if ((humanChoice + 1) % 3 == computerChoice) {
@@ -70,28 +65,9 @@ You won this round!`
   }
 }
 
-/* 
-4. Function: `playGame()`
-    - Initialize game variables
-      - Set `humanScore = 0`
-      - Set `computerScore = 0`
-      - Set `roundsPlayed = 0`
-    - While `roundsPlayed < 5`:
-      - Call `const humanSelection = getHumanChoice()`
-      - Call `const computerSelection = getComputerChoice()`
-      - Call `let winner = playRound(humanSelection, computerSelection)`
-      - Update score:
-        - If `winner == "human"` -> `humanScore++`
-        - If `winner == "computer"` -> `computerScore++`
-        - If `winner == "tie"` -> no score increment
-      - Increment `roundsPlayed++`
-    - After 5 rounds:
-      - Log final scores: "Final scores: Human = [humanScore], Computer = [computerScore]"
-    - Determine and log overall winner:
-      - If `humanScore > computerScore` -> "You win the game!"
-      - if `computerScore > humanScore` -> "Computer wins the game!"
-      - if `humanScore == computerScore` -> "The game is a tie!"
-*/
+/**
+ * Plays 5 rounds of Rock Paper Scissors and declares the overall winner
+ */
 function playGame() {
 
   let humanScore = 0;
@@ -101,7 +77,9 @@ function playGame() {
   while (roundsPlayed < 5) {
     const computerSelection = getComputerChoice();
     const humanSelection = getHumanChoice();
-    switch (winner = playRound(humanSelection, computerSelection)) {
+    const winner = playRound(humanSelection, computerSelection);
+
+    switch (winner) {
       case "human":
         humanScore++;
         break;
@@ -144,8 +122,5 @@ The game is a tie!`
   }
 }
 
-/*
-5. Main Execution:
-    - Call `playGame()` to start the game
-*/
+// Start the game
 playGame();
